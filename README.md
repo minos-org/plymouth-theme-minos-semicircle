@@ -3,7 +3,7 @@
 [Plymouth](http://en.wikipedia.org/wiki/Plymouth_(software)) is the application which provides the graphical "splash" screen when booting and shutting down a Minos system. 
 
 <p align="center">
-<img src="https://github.com/minos-org/plymouth-theme-minos-semicircle/blob/master/plymouth-minos-semicircle.gif" alt="minos-semicircle-theme"/>
+<img src="https://raw.githubusercontent.com/minos-org/plymouth-theme-minos-semicircle/master/plymouth-minos-semicircle.gif" alt="minos-semicircle-theme"/>
 </p>
 
 ## Quick start
