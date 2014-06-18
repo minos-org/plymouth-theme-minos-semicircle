@@ -1,0 +1,104 @@
+Window.GetMaxWidth = fun (){
+  i = 0;
+  width = 0;
+  while (Window.GetWidth(i)){
+    width = Math.Max(width, Window.GetWidth(i));
+    i++;
+    }
+  return width;
+};
+
+Window.GetMaxHeight = fun (){
+  i = 0;
+  height = 0;
+  while (Window.GetHeight(i)){
+    height = Math.Max(height, Window.GetHeight(i));
+    i++;
+    }
+  return height;
+};
+
+anim.imagecount = 32;
+anim.target_width =  0.06* 0.46 * Window.GetWidth();
+anim.target_height =  0.06* 0.46 * Window.GetWidth();
+
+fun RotatedImage (index){
+	index = Math.Int(index);
+	if (!RotatedImageCache[index])
+		RotatedImageCache[index] = anim.original_image.Rotate((Math.Pi*2*index)/anim.imagecount).Scale(anim.target_width, anim.target_height);
+
+	return RotatedImageCache[index];
+	}
+
+logo.original_image = ImageNew("logo.png");
+background.original_image = ImageNew("background.png");
+Window.SetBackgroundTopColor(0, 0, 0);
+Window.SetBackgroundBottomColor(0, 0, 0);
+
+anim.image= ImageNew("animation.png");
+anim.original_image= anim.image.Scale(anim.target_width, anim.target_width);
+
+anim.sprite = SpriteNew();
+anim.sprite.SetImage(RotatedImage (0));
+anim.sprite.SetX((Window.GetX() + Window.GetWidth() - RotatedImage(0).GetWidth()) / 2);
+anim.sprite.SetY(Window.GetY() + Window.GetHeight() * 0.47);
+anim.angle = 0;
+anim.index = 0;
+
+ratio =  logo.original_image.GetWidth() / logo.original_image.GetHeight();
+reduction = 0.4;
+logo.image = logo.original_image.Scale(reduction * Window.GetMaxWidth() , reduction / ratio *  Window.GetMaxWidth());
+logo.sprite = SpriteNew();
+logo.sprite.SetImage(logo.image);
+logo.opacity_angle = 0;
+logo.sprite.SetX((Window.GetX() + Window.GetMaxWidth()  - logo.image.GetWidth())  / 2);
+logo.sprite.SetY(Window.GetY() + Window.GetHeight() * 0.47);
+
+background.image = background.original_image.Scale(Window.GetMaxWidth() , Window.GetMaxHeight());
+background.sprite = SpriteNew();
+background.sprite.SetImage(background.image);
+background.sprite.SetPosition(Window.GetX(), Window.GetY(), -10);
+
+sprite_prompt = SpriteNew();
+
+fun refresh_callback ()
+  {
+    if (status == "normal")
+      {
+	anim.index += 1;
+	anim.index %= anim.imagecount;
+	anim.sprite.SetImage(RotatedImage (anim.index));
+        #anim.sprite.SetOpacity (1);
+	motif.sprite.SetOpacity(motif.opacity);
+      }
+    else
+      {
+        anim.sprite.SetOpacity(0);
+	motif.sprite.SetOpacity(0);
+      }
+
+  }
+ 
+if (Plymouth.GetMode() != "suspend" && Plymouth.GetMode() != "resume") {
+  Plymouth.SetRefreshFunction (refresh_callback);
+}
+
+status = "normal";
+fun display_normal_callback ()
+  {
+    global.status = "normal";
+  }
+
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+
+#----------------------------------------- Quit --------------------------------
+
+fun quit_callback ()
+{
+ anim.sprite.SetOpacity (0);
+  if (Plymouth.GetMode() == "shutdown") {
+   motif.sprite.SetOpacity(0);
+  }
+}
+
+Plymouth.SetQuitFunction(quit_callback);

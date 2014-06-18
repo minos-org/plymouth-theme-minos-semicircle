@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Minos
+Description=Minos semicircle plymouth theme
+ModuleName=script
+
+[script]
+ImageDir=/lib/plymouth/themes/minos-semicircle
+ScriptFile=/lib/plymouth/themes/minos-semicircle/minos-semicircle.script
