@@ -24,7 +24,7 @@
 
 ## Uninstalling
 
-If by any reason you dislike [plymouth-minos-semicircle](https://github.com/chilicuil/shundle) you can uninstall it as any other deb package:
+If by any reason you dislike [plymouth-minos-semicircle](https://github.com/minos-org/plymouth-theme-minos-semicircle) you can uninstall it as any other deb package:
 
    ```
    $ sudo apt-get remove plymouth-theme-minos-semicircle
@@ -32,4 +32,4 @@ If by any reason you dislike [plymouth-minos-semicircle](https://github.com/chil
 
 ## Feedback
 
-Please drop me an [email](mailto:m@javier.io) with your suggestions or open [an issue](https://github.com/chilicuil/shundle/issues) describing the problems you faced.
+Please drop me an [email](mailto:m@javier.io) with your suggestions or open [an issue](https://github.com/minos-org/plymouth-theme-minos-semicircle/issues) with your comments.
