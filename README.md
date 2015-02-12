@@ -8,6 +8,8 @@
 
 ## Quick start
 
+### On Ubuntu (only LTS releases)
+
 1. Set up the minos archive:
 
    ```
@@ -22,13 +24,14 @@
 
 3. Enjoy ☺!
 
-## Uninstalling
 
-If by any reason you dislike [plymouth-minos-semicircle](https://github.com/minos-org/plymouth-theme-minos-semicircle) you can uninstall it as any other deb package:
+### On other Linux distributions
 
-   ```
-   $ sudo apt-get remove plymouth-theme-minos-semicircle
-   ```
+1. Type `sudo mkdir -p /lib/plymouth/themes/minos-semicircle/`
+
+2. Copy files `sudo cp *png *.plymouth *.script /lib/plymouth/themes/minos-semicircle/`
+
+3. Set the default theme and rebuild the initramfs file `plymouth-set-default-theme -R minos-semicircle`
 
 ## Feedback
 
