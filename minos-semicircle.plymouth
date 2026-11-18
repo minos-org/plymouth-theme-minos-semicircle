@@ -4,5 +4,5 @@ Description=Minos semicircle plymouth theme
 ModuleName=script
 
 [script]
-ImageDir=/lib/plymouth/themes/minos-semicircle
-ScriptFile=/lib/plymouth/themes/minos-semicircle/minos-semicircle.script
+ImageDir=/usr/share/plymouth/themes/minos-semicircle
+ScriptFile=/usr/share/plymouth/themes/minos-semicircle/minos-semicircle.script
